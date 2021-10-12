@@ -88,38 +88,16 @@ namespace Snake
             last.Y = headPosition.Y;
             BodyParts.Insert(0, last);
             
-            if (direction == Direction.Right)
-            {
-                headPosition.X += 1;
-            }
-            else if (direction == Direction.Left)
-            {
-                headPosition.X -= 1;
-            } 
-            else if (direction == Direction.Up)
-            {
-                headPosition.Y -= 1;
-            }
-            else if (direction == Direction.Down)
-            {
-                headPosition.Y += 1;
-            }
+            if (direction == Direction.Right) headPosition.X += 1;
+            else if (direction == Direction.Left) headPosition.X -= 1;
+            else if (direction == Direction.Up) headPosition.Y -= 1;
+            else if (direction == Direction.Down) headPosition.Y += 1;
 
-            if (headPosition.X > _screenBuffer.roomWidth - 1)
-            {
-                headPosition.X = 0;
-            } else if (headPosition.X < 0)
-            {
-                headPosition.X = _screenBuffer.roomWidth - 1;
-            }
+            if (headPosition.X > _screenBuffer.roomWidth - 1) headPosition.X = 0;
+            else if (headPosition.X < 0) headPosition.X = _screenBuffer.roomWidth - 1;
             
-            if (headPosition.Y > _screenBuffer.roomHeight - 1)
-            {
-                headPosition.Y = 0;
-            } else if (headPosition.Y < 0)
-            {
-                headPosition.Y = _screenBuffer.roomHeight - 1;
-            }
+            if (headPosition.Y > _screenBuffer.roomHeight - 1) headPosition.Y = 0;
+            else if (headPosition.Y < 0) headPosition.Y = _screenBuffer.roomHeight - 1;
         }
 
         public void Draw(ScreenBuffer buffer)
