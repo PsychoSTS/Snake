@@ -105,7 +105,7 @@ namespace Snake
                 headPosition.Y += 1;
             }
 
-            if (headPosition.X > _screenBuffer.roomWidth)
+            if (headPosition.X > _screenBuffer.roomWidth - 1)
             {
                 headPosition.X = 0;
             } else if (headPosition.X < 0)
@@ -113,7 +113,7 @@ namespace Snake
                 headPosition.X = _screenBuffer.roomWidth - 1;
             }
             
-            if (headPosition.Y > _screenBuffer.roomHeight)
+            if (headPosition.Y > _screenBuffer.roomHeight - 1)
             {
                 headPosition.Y = 0;
             } else if (headPosition.Y < 0)
