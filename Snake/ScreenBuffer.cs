@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Snake
 {
     public class ScreenBuffer
     {
-        public int roomWidth;
-        public int roomHeight;
+        public int Width;
+        public int Height;
         
         //initiate important variables
         public char[,] initialScreenBufferArray; //main buffer array
@@ -18,22 +19,33 @@ namespace Snake
         {
             OpenAlternateBuffer();
             HideCursor();
-            roomWidth = Console.WindowWidth;
-            roomHeight = Console.WindowHeight;
+            Width = Console.WindowWidth;
+            Height = Console.WindowHeight;
             
             // Console.SetWindowSize(roomWidth, roomHeight);
             
-            initialScreenBufferArray = new char[roomWidth, roomHeight];
+            initialScreenBufferArray = new char[Width, Height];
             
-            for (int iy = 0; iy < roomHeight-1; iy++)
+            for (int iy = 0; iy < Height-1; iy++)
             {
-                for (int ix = 0; ix < roomWidth; ix++)
+                for (int ix = 0; ix < Width; ix++)
                 {
-                    initialScreenBufferArray[ix, iy] = '.';
+                    initialScreenBufferArray[ix, iy] = ' ';
                 }
             }
 
             screenBufferArray = (char[,])initialScreenBufferArray.Clone();
+        }
+
+        public void Fill(char fillChar)
+        {
+            for (int iy = 0; iy < Height-1; iy++)
+            {
+                for (int ix = 0; ix < Width; ix++)
+                {
+                    initialScreenBufferArray[ix, iy] = fillChar;
+                }
+            }
         }
 
         public void OpenAlternateBuffer()
@@ -78,9 +90,9 @@ namespace Snake
             screenBuffer = string.Empty;
             
             //iterate through buffer, adding each value to screenBuffer
-            for (int iy = 0; iy < roomHeight-1; iy++)
+            for (int iy = 0; iy < Height-1; iy++)
             {
-                for (int ix = 0; ix < roomWidth; ix++)
+                for (int ix = 0; ix < Width; ix++)
                 {
                     screenBuffer += screenBufferArray[ix, iy];
                 }
