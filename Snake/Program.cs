@@ -14,6 +14,7 @@ namespace Snake
             bool quit = false;
             
             Snake snake = new Snake(5, 1);
+            Food food = new Food(10, 10);
             
             while (!quit)
             {
