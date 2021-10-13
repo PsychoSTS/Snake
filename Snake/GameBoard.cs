@@ -4,20 +4,15 @@ namespace Snake
 {
     public class GameBoard
     {
-        public List<IGameEntity> Entities = new List<IGameEntity>();
-
-        public int Width
-        {
-            get { return _screenBuffer.Width; }
-        } 
+        public int PlayerScore = 0;
         
-        public int Height
-        {
-            get { return _screenBuffer.Height; }
-        } 
+        public List<IGameEntity> Entities = new();
+        public List<IGameSystem> Systems = new();
+
+        public int Width => _screenBuffer.Width;
+        public int Height => _screenBuffer.Height;
 
         private ScreenBuffer _screenBuffer;
-        
         
         public GameBoard()
         {
@@ -34,9 +29,19 @@ namespace Snake
         {
             Entities.Add(entity);
         }
+        
+        public void RegisterGameSystem(IGameSystem system)
+        {
+            Systems.Add(system);
+        }
 
         public void Update()
         {
+            foreach (var gameSystem in Systems)
+            {
+                gameSystem.Update();
+            }
+            
             foreach (IGameEntity gameEntity in Entities)
             {
                 gameEntity.Update();

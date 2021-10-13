@@ -21,8 +21,6 @@
         }
 
         public void Update()
-        {
-            throw new System.NotImplementedException();
-        }
+        {}
     }
 }

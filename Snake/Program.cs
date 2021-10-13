@@ -6,15 +6,14 @@ using System.Threading;
 
 namespace Snake
 {
-
     class Program
     {
         static void Main(string[] args)
         {
             bool quit = false;
-            
+
+            FoodSpawner foodSpawner = new FoodSpawner();
             Snake snake = new Snake(5, 1);
-            Food food = new Food(10, 10);
             
             while (!quit)
             {
@@ -42,17 +41,22 @@ namespace Snake
                         quit = true;
                     }
                 }
-
+                
                 Global.GameBoard.Update();
                 Global.GameBoard.Draw();
                 
+                if (snake.AttemptEat(foodSpawner.ActiveFood))
+                {
+                    foodSpawner.Consume();
+                }
+                
                 // Wait a moment to delay the application loop
                 // TODO: This is flawed.... What if the game loop takes long???
-                Thread.Sleep(1000 / 4);
+                Thread.Sleep(1000 / 6);
             }
             
             Global.GameBoard.Close();
-            Console.WriteLine("Thank you for playing!");
+            Console.WriteLine($"Your score: {Global.GameBoard.PlayerScore}");
         }
     }
 }
