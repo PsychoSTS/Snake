@@ -35,6 +35,14 @@ namespace Snake
             Entities.Add(entity);
         }
 
+        public void Update()
+        {
+            foreach (IGameEntity gameEntity in Entities)
+            {
+                gameEntity.Update();
+            }
+        }
+
         public void Draw()
         {
             foreach (IGameEntity gameEntity in Entities)

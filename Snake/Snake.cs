@@ -82,5 +82,10 @@ namespace Snake
                 screenBuffer.Draw("#", bodyPart.X, bodyPart.Y);
             }
         }
+
+        public void Update()
+        {
+            Move();
+        }
     }
 }

@@ -19,5 +19,10 @@
         {
             screenBuffer.Draw("0", Position.X, Position.Y);
         }
+
+        public void Update()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

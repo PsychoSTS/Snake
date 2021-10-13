@@ -43,8 +43,11 @@ namespace Snake
                     }
                 }
 
-                snake.Move();
+                Global.GameBoard.Update();
                 Global.GameBoard.Draw();
+                
+                // Wait a moment to delay the application loop
+                // TODO: This is flawed.... What if the game loop takes long???
                 Thread.Sleep(1000 / 4);
             }
             
