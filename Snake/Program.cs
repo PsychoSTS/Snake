@@ -19,6 +19,7 @@ namespace Snake
             
             while (!quit)
             {
+                // Start timing the active frame
                 stopwatch.Start();
                 
                 if (Console.KeyAvailable)
@@ -54,9 +55,11 @@ namespace Snake
                     foodSpawner.Consume();
                 }
                 
+                // Elapsed time for processing the frame
                 stopwatch.Stop();
                 int elapsed = (int)stopwatch.ElapsedMilliseconds;
                 
+                // Frame timing
                 Thread.Sleep((1000 / 6) - elapsed);
             }
             
