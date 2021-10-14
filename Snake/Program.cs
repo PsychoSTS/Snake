@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -12,11 +13,14 @@ namespace Snake
         {
             bool quit = false;
 
+            var stopwatch = new Stopwatch();
             FoodSpawner foodSpawner = new FoodSpawner();
             Snake snake = new Snake(5, 1);
             
             while (!quit)
             {
+                stopwatch.Start();
+                
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo inputKey = Console.ReadKey();
@@ -50,9 +54,10 @@ namespace Snake
                     foodSpawner.Consume();
                 }
                 
-                // Wait a moment to delay the application loop
-                // TODO: This is flawed.... What if the game loop takes long???
-                Thread.Sleep(1000 / 6);
+                stopwatch.Stop();
+                int elapsed = (int)stopwatch.ElapsedMilliseconds;
+                
+                Thread.Sleep((1000 / 6) - elapsed);
             }
             
             Global.GameBoard.Close();
