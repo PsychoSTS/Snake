@@ -58,11 +58,14 @@ namespace Snake
                 // Elapsed time for processing the frame
                 stopwatch.Stop();
                 int elapsed = (int)stopwatch.ElapsedMilliseconds;
-                
+
                 // Frame timing
                 Thread.Sleep((1000 / 6) - elapsed);
+
+                //resets stopwatch to 0
+                stopwatch.Reset();
             }
-            
+
             Global.GameBoard.Close();
             Console.WriteLine($"Your score: {Global.GameBoard.PlayerScore}");
         }
